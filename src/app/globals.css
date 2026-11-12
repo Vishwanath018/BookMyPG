@@ -1,67 +1,23 @@
 ﻿@import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #172b45;
-
-  --primary: #142b4a;
-  --primary-hover: #1c3b61;
-
-  --secondary: #f4b942;
-  --secondary-hover: #e5a92f;
-
-  --surface: #f7f9fc;
-  --border: #e2e8f0;
-  --muted: #64748b;
-
-  --success: #15803d;
-  --error: #dc2626;
-
-  --radius: 12px;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-
-  --color-surface: var(--surface);
-  --color-border: var(--border);
-  --color-muted: var(--muted);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --navy: #102c4c;
+  --red: #e31837;
+  --gold: #f4b942;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
+html, body {
+  margin: 0;
   min-height: 100%;
-  scroll-behavior: smooth;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  min-height: 100vh;
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
+  color: var(--navy);
 }
 
 a {
@@ -69,83 +25,1520 @@ a {
   text-decoration: none;
 }
 
-::selection {
-  background: var(--secondary);
-  color: var(--primary);
+button, input, select {
+  font: inherit;
 }
 
-.container-main {
-  width: 100%;
-  max-width: 1280px;
-  margin-inline: auto;
-  padding-inline: 24px;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 24px;
-  border: 0;
-  border-radius: var(--radius);
-  background: var(--primary);
+.hero {
+  min-height: 770px;
+  height: 86vh;
+  max-height: 900px;
+  position: relative;
+  overflow: hidden;
+  background: #142b4a;
   color: white;
-  font-weight: 600;
-  transition: background 0.2s ease;
 }
 
-.btn-primary:hover {
-  background: var(--primary-hover);
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.btn-secondary {
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 20, 38, .62) 0%,
+    rgba(5, 20, 38, .28) 42%,
+    rgba(5, 20, 38, .62) 100%
+  );
+}
+
+.top-header {
+  height: 78px;
+  padding: 0 7.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  background: rgba(12, 34, 58, .35);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+
+.brand {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 24px;
+  font-size: 35px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: white;
+}
+
+.brand-ticket {
+  background: var(--red);
+  padding: 3px 8px 5px;
+  margin-left: 4px;
+  border-radius: 7px;
+  letter-spacing: -1px;
+  transform: rotate(-3deg);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon {
+  font-size: 28px;
+}
+
+.header-link strong,
+.header-link small {
+  display: block;
+}
+
+.header-link strong {
+  font-size: 15px;
+}
+
+.header-link small {
+  margin-top: 4px;
+  color: rgba(255,255,255,.8);
+  font-size: 12px;
+}
+
+.login-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+}
+
+.login-link span {
+  font-size: 24px;
+}
+
+.city-nav {
+  height: 57px;
+  padding: 0 7.5%;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  position: relative;
+  z-index: 2;
+  background: rgba(12, 34, 58, .25);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  overflow-x: auto;
+}
+
+.city-button {
+  background: transparent;
   border: 0;
-  border-radius: var(--radius);
-  background: var(--secondary);
-  color: var(--primary);
+  color: white;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 15px;
   font-weight: 600;
-  transition: background 0.2s ease;
 }
 
-.btn-secondary:hover {
-  background: var(--secondary-hover);
+.city-button span {
+  margin-left: 5px;
 }
 
-.form-input {
-  width: 100%;
-  min-height: 48px;
-  padding: 12px 16px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+.city-button:hover {
+  color: #ffd36b;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  min-height: 630px;
+  padding: 105px 24px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-badge {
+  padding: 10px 19px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 30px;
+  background: rgba(255,255,255,.14);
+  backdrop-filter: blur(8px);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hero-badge span {
+  color: #ffd36b;
+  margin-right: 6px;
+}
+
+.hero-content h1 {
+  margin: 23px 0 12px;
+  font-size: clamp(42px, 4.5vw, 66px);
+  line-height: 1.08;
+  font-weight: 850;
+  letter-spacing: -2px;
+  text-shadow: 0 3px 15px rgba(0,0,0,.15);
+}
+
+.hero-content h1 span {
+  color: #ffd166;
+}
+
+.hero-description {
+  margin: 5px 0 35px;
+  line-height: 1.7;
+  font-size: 17px;
+  color: rgba(255,255,255,.95);
+}
+
+.search-panel {
+  width: min(1240px, 94%);
+  min-height: 94px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
   background: white;
-  color: var(--foreground);
+  border-radius: 17px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.22);
+  color: #27364a;
+}
+
+.search-field {
+  min-width: 0;
+  flex: 1;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  text-align: left;
+  border-right: 1px solid #e2e6ec;
+}
+
+.location-field {
+  flex: 1.25;
+}
+
+.sharing-field {
+  flex: 1;
+  border-right: 0;
+}
+
+.field-icon {
+  font-size: 27px;
+  color: #344c69;
+}
+
+.field-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.field-content small {
+  display: block;
+  color: #778397;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.field-content input,
+.field-content select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 0;
   outline: none;
-  transition: border-color 0.2s ease;
+  color: #303b4c;
+  background: transparent;
+  font-size: 15px;
 }
 
-.form-input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgb(20 43 74 / 10%);
+.search-button {
+  height: 68px;
+  min-width: 174px;
+  padding: 0 25px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--red);
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
 }
 
-@media (max-width: 640px) {
-  .container-main {
-    padding-inline: 16px;
+.search-button:hover {
+  background: #c9102d;
+  transform: translateY(-2px);
+}
+
+.search-button span {
+  margin-left: 10px;
+}
+
+.hero-trust {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 24px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero-trust span::first-letter {
+  color: #ffd166;
+}
+
+.stats-section {
+  min-height: 105px;
+  padding: 20px 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(25px, 5vw, 75px);
+  background: #fff;
+  color: #29374a;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-icon {
+  color: var(--red);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.stat strong,
+.stat small {
+  display: block;
+}
+
+.stat strong {
+  font-size: 14px;
+}
+
+.stat small {
+  margin-top: 4px;
+  color: #788396;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .top-header {
+    padding: 0 4%;
+  }
+
+  .header-actions {
+    gap: 18px;
+  }
+
+  .header-link {
+    display: none;
+  }
+
+  .city-nav {
+    padding: 0 4%;
+    gap: 22px;
+  }
+
+  .hero-content {
+    padding-top: 100px;
+  }
+
+  .search-panel {
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+
+  .search-field {
+    flex-basis: 50%;
+    border-bottom: 1px solid #e2e6ec;
+  }
+
+  .sharing-field {
+    border-right: 0;
+  }
+
+  .search-button {
+    flex-basis: 100%;
+  }
+
+  .stats-section {
+    flex-wrap: wrap;
+    gap: 25px;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+@media (max-width: 560px) {
+  .hero {
+    min-height: 850px;
+    height: auto;
+  }
+
+  .top-header {
+    height: 70px;
+  }
+
+  .brand {
+    font-size: 29px;
+  }
+
+  .hero-content {
+    padding: 90px 12px 45px;
+  }
+
+  .hero-content h1 {
+    font-size: 43px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .search-panel {
+    width: 100%;
+  }
+
+  .search-field {
+    flex-basis: 100%;
+    border-right: 0;
+  }
+
+  .hero-trust {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .stats-section {
+    justify-content: flex-start;
+    padding: 25px 12%;
+  }
+
+  .stat {
+    width: 100%;
   }
 }
+
+/* =====================================
+   ALL CITIES POPUP
+===================================== */
+
+.all-cities-button.active {
+  color: #ffd166;
+}
+
+.cities-backdrop {
+  position: absolute;
+  inset: 135px 0 0;
+  z-index: 5;
+}
+
+.cities-popup {
+  position: absolute;
+  top: 135px;
+  left: 0;
+  width: 100%;
+  max-height: min(620px, calc(100vh - 145px));
+  overflow-y: auto;
+  background: #ffffff;
+  color: #555;
+  z-index: 10;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  animation: cities-appear .2s ease-out;
+}
+
+@keyframes cities-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.city-search-box {
+  height: 58px;
+  margin: 20px 15px 0;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  gap: 18px;
+}
+
+.city-search-icon {
+  font-size: 29px;
+  color: #333;
+}
+
+.city-search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  background: transparent;
+}
+
+.detect-location {
+  width: 100%;
+  height: 51px;
+  padding: 0 17px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border: none;
+  border-bottom: 1px solid #dedede;
+  color: #e31837;
+  font-size: 17px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.detect-location span {
+  font-size: 22px;
+}
+
+.popular-cities-section {
+  padding: 17px 25px 10px;
+}
+
+.cities-popup h3 {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  color: #444;
+  margin: 0 0 23px;
+}
+
+.popular-cities-grid {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.popular-city {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  color: #666;
+  font-size: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.city-illustration {
+  height: 78px;
+  width: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+  color: #535b60;
+  transition: transform .2s;
+}
+
+.featured-city .city-illustration {
+  color: #16c8bb;
+}
+
+.popular-city:hover .city-illustration {
+  transform: translateY(-5px);
+}
+
+.popular-city:hover > span:last-child {
+  color: #e31837;
+}
+
+.other-cities-section {
+  padding: 28px 27px 10px;
+}
+
+.other-cities-section h3 {
+  margin-bottom: 25px;
+}
+
+.other-cities-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: 30px;
+  row-gap: 8px;
+}
+
+.other-cities-grid button {
+  border: none;
+  background: transparent;
+  text-align: left;
+  color: #999;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  min-width: 0;
+}
+
+.other-cities-grid button:hover {
+  color: #e31837;
+}
+
+.no-cities-found {
+  text-align: center;
+  padding: 30px;
+  color: #888;
+}
+
+.hide-cities-button {
+  display: block;
+  margin: 25px auto 16px;
+  border: none;
+  background: transparent;
+  color: #e31837;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.hide-cities-button:hover {
+  color: #b90d29;
+}
+
+@media (max-width: 900px) {
+  .popular-cities-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: 22px;
+  }
+
+  .popular-city {
+    white-space: normal;
+    font-size: 14px;
+  }
+
+  .other-cities-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .cities-popup {
+    top: 127px;
+    max-height: calc(100vh - 130px);
+  }
+
+  .cities-backdrop {
+    inset: 127px 0 0;
+  }
+
+  .popular-cities-section {
+    padding: 18px 12px;
+  }
+
+  .popular-cities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 20px;
+  }
+
+  .city-illustration {
+    height: 55px;
+    font-size: 42px;
+  }
+
+  .other-cities-section {
+    padding: 20px 18px;
+  }
+
+  .other-cities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+  }
+
+  .other-cities-grid button {
+    font-size: 13px;
+  }
+}
+
+
+/* =====================================
+   BOOKMYPG CITY SELECTOR - REFINED
+===================================== */
+
+.cities-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.48);
+  z-index: 20;
+}
+
+.cities-popup {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(95%, 1200px);
+  max-height: calc(100vh - 44px);
+  overflow-y: auto;
+  background: #fff;
+  color: #555;
+  z-index: 21;
+  border-radius: 10px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.20);
+  animation: cities-appear .2s ease-out;
+}
+
+@keyframes cities-appear {
+  from {
+    opacity: 0;
+    margin-top: -8px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+.city-search-box {
+  height: 58px;
+  margin: 20px 20px 0;
+}
+
+.detect-location {
+  height: 52px;
+  padding-left: 22px;
+}
+
+.popular-cities-section {
+  padding: 17px 22px 8px;
+}
+
+.cities-popup h3 {
+  font-size: 17px;
+  margin-bottom: 22px;
+}
+
+.popular-cities-grid {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.popular-city {
+  gap: 7px;
+  font-size: 16px;
+}
+
+.city-illustration {
+  width: 85px;
+  height: 78px;
+  font-size: 55px;
+}
+
+.other-cities-section {
+  padding: 24px 28px 5px;
+}
+
+.other-cities-section h3 {
+  margin-bottom: 24px;
+}
+
+.other-cities-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  row-gap: 8px;
+}
+
+.other-cities-grid button {
+  font-size: 14px;
+}
+
+.hide-cities-button {
+  margin: 24px auto 14px;
+  font-size: 17px;
+}
+
+@media (max-width: 700px) {
+  .cities-popup {
+    width: 96%;
+    top: 12px;
+    max-height: calc(100vh - 24px);
+  }
+
+  .popular-cities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .other-cities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+.city-illustration {
+  width: 85px;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555d61;
+}
+
+.city-illustration svg {
+  width: 85px;
+  height: 78px;
+  display: block;
+}
+
+.featured-city .city-illustration {
+  color: #16bdb5;
+}
+
+
+/* =====================================
+   BOOKMYPG AUTHENTICATION MODAL
+===================================== */
+
+.auth-header-button {
+  cursor: pointer;
+  font-family: inherit;
+  color: white;
+}
+
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.68);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  animation: auth-fade .2s ease;
+}
+
+.auth-modal {
+  width: 540px;
+  height: 675px;
+  max-width: 100%;
+  max-height: calc(100vh - 30px);
+  overflow-y: auto;
+  position: relative;
+  background: #fff;
+  color: #222;
+  border-radius: 10px;
+  padding: 32px 60px;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(0,0,0,.2);
+  animation: auth-scale .2s ease;
+}
+
+.auth-modal h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: #111;
+}
+
+.auth-close {
+  position: absolute;
+  top: 15px;
+  right: 19px;
+  background: transparent;
+  border: 0;
+  color: #444;
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.auth-back {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  border: 0;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin: 12px 0 30px;
+}
+
+.auth-role-section {
+  margin: 25px 0;
+}
+
+.auth-role-section h3 {
+  font-size: 15px;
+  text-align: left;
+  color: #344b66;
+  margin: 0 0 12px;
+}
+
+.auth-role-button,
+.auth-method-button {
+  width: 100%;
+  height: 58px;
+  margin-bottom: 14px;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  color: #344b66;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.auth-role-button:hover,
+.auth-method-button:hover {
+  border-color: #e31837;
+  background: #fffafa;
+}
+
+.auth-methods {
+  margin-top: 48px;
+}
+
+.auth-method-button {
+  height: 60px;
+  position: relative;
+  margin-bottom: 22px;
+  font-size: 16px;
+}
+
+.google-icon {
+  position: absolute;
+  left: 24px;
+  font-size: 23px;
+  font-weight: 900;
+  color: #4285f4;
+}
+
+.mobile-icon {
+  position: absolute;
+  left: 24px;
+  font-size: 21px;
+}
+
+.auth-terms {
+  position: absolute;
+  bottom: 32px;
+  left: 15px;
+  right: 15px;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.auth-terms a {
+  text-decoration: underline;
+  color: #888;
+}
+
+@keyframes auth-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes auth-scale {
+  from { transform: scale(.96); }
+  to { transform: scale(1); }
+}
+
+@media (max-width: 560px) {
+  .auth-modal {
+    width: 100%;
+    height: 620px;
+    padding: 35px 25px;
+  }
+
+  .auth-methods {
+    margin-top: 40px;
+  }
+}
+
+
+/* =====================================
+   BOOKMYPG AUTHENTICATION MODAL
+===================================== */
+
+.auth-header-button {
+  cursor: pointer;
+  font-family: inherit;
+  color: white;
+}
+
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.68);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  animation: auth-fade .2s ease;
+}
+
+.auth-modal {
+  width: 540px;
+  height: 675px;
+  max-width: 100%;
+  max-height: calc(100vh - 30px);
+  overflow-y: auto;
+  position: relative;
+  background: #fff;
+  color: #222;
+  border-radius: 10px;
+  padding: 32px 60px;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(0,0,0,.2);
+  animation: auth-scale .2s ease;
+}
+
+.auth-modal h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: #111;
+}
+
+.auth-close {
+  position: absolute;
+  top: 15px;
+  right: 19px;
+  background: transparent;
+  border: 0;
+  color: #444;
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.auth-back {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  border: 0;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin: 12px 0 30px;
+}
+
+.auth-role-section {
+  margin: 25px 0;
+}
+
+.auth-role-section h3 {
+  font-size: 15px;
+  text-align: left;
+  color: #344b66;
+  margin: 0 0 12px;
+}
+
+.auth-role-button,
+.auth-method-button {
+  width: 100%;
+  height: 58px;
+  margin-bottom: 14px;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  color: #344b66;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.auth-role-button:hover,
+.auth-method-button:hover {
+  border-color: #e31837;
+  background: #fffafa;
+}
+
+.auth-methods {
+  margin-top: 48px;
+}
+
+.auth-method-button {
+  height: 60px;
+  position: relative;
+  margin-bottom: 22px;
+  font-size: 16px;
+}
+
+.google-icon {
+  position: absolute;
+  left: 24px;
+  font-size: 23px;
+  font-weight: 900;
+  color: #4285f4;
+}
+
+.mobile-icon {
+  position: absolute;
+  left: 24px;
+  font-size: 21px;
+}
+
+.auth-terms {
+  position: absolute;
+  bottom: 32px;
+  left: 15px;
+  right: 15px;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.auth-terms a {
+  text-decoration: underline;
+  color: #888;
+}
+
+@keyframes auth-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes auth-scale {
+  from { transform: scale(.96); }
+  to { transform: scale(1); }
+}
+
+@media (max-width: 560px) {
+  .auth-modal {
+    width: 100%;
+    height: 620px;
+    padding: 35px 25px;
+  }
+
+  .auth-methods {
+    margin-top: 40px;
+  }
+}
+
+
+/* =========================================
+   BOOKMYPG - PREMIUM AUTHENTICATION DESIGN
+========================================= */
+
+.auth-overlay {
+  background: rgba(10, 18, 29, 0.72);
+  backdrop-filter: blur(3px);
+  padding: 20px;
+}
+
+.auth-modal {
+  width: 540px;
+  height: 675px;
+  max-width: 100%;
+  max-height: calc(100vh - 40px);
+  padding: 42px 58px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  overflow-y: auto;
+  text-align: center;
+}
+
+.auth-modal h2 {
+  margin: 5px 0 12px;
+  color: #172b43;
+  font-size: 25px;
+  font-weight: 850;
+  letter-spacing: -0.8px;
+  line-height: 1.3;
+}
+
+.auth-subtitle {
+  color: #7b8491;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 12px 0 34px;
+}
+
+.auth-close {
+  top: 15px;
+  right: 19px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #444d58;
+  transition: background .2s, color .2s;
+}
+
+.auth-close:hover {
+  background: #f2f3f5;
+  color: var(--red);
+}
+
+.auth-back {
+  top: 25px;
+  left: 22px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #53677f;
+  transition: color .2s;
+}
+
+.auth-back:hover {
+  color: var(--red);
+}
+
+/* Account type sections */
+
+.auth-role-section {
+  margin: 27px 0 31px;
+  text-align: left;
+}
+
+.auth-role-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 15px;
+  color: #172b43;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+.auth-role-section h3::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 19px;
+  border-radius: 5px;
+  background: var(--red);
+}
+
+/* Account action buttons */
+
+.auth-role-button {
+  width: 100%;
+  height: 57px;
+  margin-bottom: 13px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border: 1px solid #d8dde4;
+  border-radius: 8px;
+
+  color: #243b56;
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: .1px;
+
+  cursor: pointer;
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.auth-role-button:hover {
+  background: #fff5f6;
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(227, 24, 55, .09);
+}
+
+.auth-role-button:active {
+  transform: translateY(0);
+}
+
+/* Google and mobile authentication */
+
+.auth-methods {
+  margin-top: 48px;
+}
+
+.auth-method-button {
+  width: 100%;
+  height: 59px;
+  margin-bottom: 20px;
+  border: 1px solid #d4d9e0;
+  border-radius: 7px;
+  background: #fff;
+
+  color: #243b56;
+  font-size: 15px;
+  font-weight: 700;
+
+  transition: all .2s ease;
+}
+
+.auth-method-button:hover {
+  border-color: var(--red);
+  background: #fff8f9;
+  box-shadow: 0 5px 16px rgba(0,0,0,.06);
+}
+
+.google-icon {
+  font-size: 23px;
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  background: conic-gradient(
+    from -45deg,
+    #4285f4 0deg 90deg,
+    #34a853 90deg 180deg,
+    #fbbc05 180deg 270deg,
+    #ea4335 270deg 360deg
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mobile-icon {
+  color: #344e6c;
+}
+
+/* Terms and conditions */
+
+.auth-terms {
+  bottom: 30px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #939ba5;
+}
+
+.auth-terms a {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.auth-terms a:hover {
+  color: var(--red);
+}
+
+/* Animations */
+
+@keyframes auth-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes auth-scale {
+  from {
+    opacity: 0;
+    transform: scale(.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 560px) {
+  .auth-overlay {
+    padding: 12px;
+  }
+
+  .auth-modal {
+    width: 100%;
+    height: 620px;
+    max-height: calc(100vh - 24px);
+    padding: 42px 25px;
+    border-radius: 12px;
+  }
+
+  .auth-modal h2 {
+    font-size: 23px;
+  }
+
+  .auth-role-section {
+    margin: 24px 0;
+  }
+
+  .auth-role-button {
+    height: 54px;
+    font-size: 14px;
+  }
+
+  .auth-methods {
+    margin-top: 40px;
+  }
+}
+
+
+/* BookMyPG - Colorful authentication action buttons */
+
+.auth-role-button.auth-login-option {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8) !important;
+    color: #FFFFFF !important;
+    border: 1px solid #2563EB !important;
+    font-weight: 800 !important;
+    transition: all 0.25s ease !important;
+}
+
+.auth-role-button.auth-login-option:hover {
+    background: linear-gradient(135deg, #1D4ED8, #1E40AF) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(37, 99, 235, 0.25);
+}
+
+.auth-role-button.auth-signup-option {
+    background: linear-gradient(135deg, #16A34A, #15803D) !important;
+    color: #FFFFFF !important;
+    border: 1px solid #16A34A !important;
+    font-weight: 800 !important;
+    transition: all 0.25s ease !important;
+}
+
+.auth-role-button.auth-signup-option:hover {
+    background: linear-gradient(135deg, #15803D, #166534) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(22, 163, 74, 0.25);
+}
+
+
+/* Final authentication button colors */
+
+/* Login buttons - Blue */
+.auth-role-section button:nth-of-type(1) {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8) !important;
+    color: #FFFFFF !important;
+    border: 1px solid #2563EB !important;
+}
+
+/* Signup buttons - Green */
+.auth-role-section button:nth-of-type(2) {
+    background: linear-gradient(135deg, #16A34A, #15803D) !important;
+    color: #FFFFFF !important;
+    border: 1px solid #16A34A !important;
+}
+
+.auth-role-section button:nth-of-type(1):hover {
+    background: #1E40AF !important;
+    transform: translateY(-3px);
+}
+
+.auth-role-section button:nth-of-type(2):hover {
+    background: #166534 !important;
+    transform: translateY(-3px);
+}
+
+
+/* BookMyPG Authentication - Final Button Theme */
+
+/* LOGIN - White */
+.auth-role-section button:nth-of-type(1) {
+    background: #FFFFFF !important;
+    color: #102C4C !important;
+    border: 1.5px solid #D5DDE7 !important;
+    font-weight: 800 !important;
+    box-shadow: none !important;
+    transition: all 0.25s ease !important;
+}
+
+.auth-role-section button:nth-of-type(1):hover {
+    background: #F3F6FA !important;
+    border-color: #102C4C !important;
+    transform: translateY(-2px);
+}
+
+/* SIGN UP - BookMyPG Red */
+.auth-role-section button:nth-of-type(2) {
+    background: #E31837 !important;
+    color: #FFFFFF !important;
+    border: 1.5px solid #E31837 !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 12px rgba(227, 24, 55, 0.15) !important;
+    transition: all 0.25s ease !important;
+}
+
+.auth-role-section button:nth-of-type(2):hover {
+    background: #C8102E !important;
+    border-color: #C8102E !important;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 16px rgba(227, 24, 55, 0.25) !important;
+}
+
+
+/* FINAL OVERRIDE - BookMyPG Login and Signup Colors */
+
+/* LOGIN - WHITE */
+.auth-role-button.auth-login-option {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    color: #102C4C !important;
+    border: 1.5px solid #D5DDE7 !important;
+    box-shadow: none !important;
+}
+
+/* LOGIN HOVER */
+.auth-role-button.auth-login-option:hover {
+    background: #F3F5F8 !important;
+    background-image: none !important;
+    color: #102C4C !important;
+}
+
+/* SIGNUP - BOOKMYPG RED */
+.auth-role-button.auth-signup-option {
+    background: #E31837 !important;
+    background-image: none !important;
+    color: #FFFFFF !important;
+    border: 1.5px solid #E31837 !important;
+    box-shadow: 0 4px 12px rgba(227, 24, 55, 0.18) !important;
+}
+
+/* SIGNUP HOVER */
+.auth-role-button.auth-signup-option:hover {
+    background: #C8102E !important;
+    background-image: none !important;
+    color: #FFFFFF !important;
+    border-color: #C8102E !important;
+}
+
