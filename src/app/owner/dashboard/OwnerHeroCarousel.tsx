@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import OwnerPropertyModal from "@/components/owner/OwnerPropertyModal";
 
 const slides = [
   {
@@ -67,13 +67,15 @@ export default function OwnerHeroCarousel() {
 
             <p>{slide.description}</p>
 
-            <Link
-              href="/owner/dashboard/properties/new"
-              className="bm-hero-cta"
-              tabIndex={active === index ? 0 : -1}
+            <div
+              className="bm-hero-modal-trigger"
+              aria-hidden={active !== index}
             >
-              List your property <span>→</span>
-            </Link>
+              <OwnerPropertyModal
+                label="List your property →"
+                className="bm-hero-cta"
+              />
+            </div>
           </div>
         </div>
       ))}
@@ -111,3 +113,4 @@ export default function OwnerHeroCarousel() {
     </section>
   );
 }
+

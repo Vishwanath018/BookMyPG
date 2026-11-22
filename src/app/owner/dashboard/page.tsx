@@ -1,5 +1,7 @@
 ﻿import Link from "next/link";
 import OwnerHeroCarousel from "./OwnerHeroCarousel";
+import OwnerPropertyModal from "@/components/owner/OwnerPropertyModal";
+import LocationSelector from "@/components/location/LocationSelector";
 import "./owner-dashboard.css";
 
 const navigation = [
@@ -40,9 +42,7 @@ export default function OwnerDashboard() {
           </div>
 
           <div className="bm-header-actions">
-            <button className="bm-location" type="button">
-              <span>⌖</span> Select location
-            </button>
+            <LocationSelector />
             <button className="bm-profile" type="button">
               <span className="bm-profile-avatar">O</span>
               <span>Owner account</span>
@@ -67,9 +67,7 @@ export default function OwnerDashboard() {
             ))}
           </div>
 
-          <Link href="/owner/dashboard/properties/new" className="bm-list-button">
-            + List your property
-          </Link>
+          <OwnerPropertyModal />
         </div>
       </nav>
 
@@ -121,12 +119,7 @@ export default function OwnerDashboard() {
               Add your PG details, upload photos and publish your
               property for customers to discover.
             </p>
-            <Link
-              href="/owner/dashboard/properties/new"
-              className="bm-red-button"
-            >
-              + Add a property
-            </Link>
+            <OwnerPropertyModal label="+ Add a property" variant="empty" />
           </div>
         </section>
 
@@ -206,4 +199,8 @@ export default function OwnerDashboard() {
     </main>
   );
 }
+
+
+
+
 

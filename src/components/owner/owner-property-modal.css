@@ -1,0 +1,551 @@
+﻿.opm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(20, 21, 32, .62);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  animation: opm-fade-in .2s ease;
+}
+
+.opm-dialog {
+  width: min(1080px, 100%);
+  height: min(850px, 94vh);
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 90px rgba(0,0,0,.25);
+  animation: opm-enter .25s ease;
+}
+
+.opm-header {
+  flex: 0 0 76px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 27px;
+  border-bottom: 1px solid #eee;
+  background: white;
+  z-index: 2;
+}
+
+.opm-brand {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.opm-logo {
+  font-size: 21px;
+  font-weight: 850;
+  color: #333545;
+  letter-spacing: -.8px;
+}
+
+.opm-logo > span {
+  color: #f84464;
+}
+
+.opm-brand > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 22px;
+  border-left: 1px solid #eee;
+}
+
+.opm-brand strong {
+  font-size: 14px;
+  color: #333545;
+}
+
+.opm-brand small {
+  font-size: 11px;
+  color: #888;
+}
+
+.opm-close {
+  height: 38px;
+  width: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #f5f5f5;
+  color: #555;
+  font-size: 26px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.opm-close:hover {
+  background: #fff0f3;
+  color: #f84464;
+}
+
+.opm-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #f8f8fa;
+}
+
+.opm-content .np-page {
+  min-height: 100%;
+  padding: 27px 35px 40px;
+  background: transparent;
+}
+
+.opm-content .np-container {
+  max-width: 850px;
+}
+
+.opm-content .np-back {
+  display: none;
+}
+
+.opm-content .np-header {
+  margin-bottom: 24px;
+}
+
+.opm-content .np-header h1 {
+  font-size: 27px;
+}
+
+.opm-content .np-card {
+  box-shadow: 0 3px 18px rgba(0,0,0,.035);
+}
+
+.opm-content .np-actions {
+  position: sticky;
+  bottom: -1px;
+  z-index: 3;
+  background: white;
+  margin: 28px -32px -32px;
+  padding: 18px 32px;
+  border-top: 1px solid #eee;
+}
+
+@keyframes opm-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes opm-enter {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 650px) {
+  .opm-overlay {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .opm-dialog {
+    height: 100dvh;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .opm-header {
+    flex-basis: 65px;
+    padding: 0 16px;
+  }
+
+  .opm-brand {
+    gap: 12px;
+  }
+
+  .opm-logo {
+    font-size: 18px;
+  }
+
+  .opm-brand > div {
+    padding-left: 12px;
+  }
+
+  .opm-content .np-page {
+    padding: 22px 13px 30px;
+  }
+
+  .opm-content .np-card {
+    padding: 20px 15px;
+  }
+
+  .opm-content .np-actions {
+    margin: 25px -15px -20px;
+    padding: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opm-overlay,
+  .opm-dialog {
+    animation: none;
+  }
+}
+
+/* ==========================================
+   BOOKMYPG PREMIUM PROPERTY REGISTRATION
+   ========================================== */
+
+.opm-overlay {
+  padding: 22px;
+  background: rgba(25, 27, 40, .70);
+  backdrop-filter: blur(10px);
+}
+
+.opm-dialog {
+  width: min(1160px, 100%);
+  height: min(900px, 94vh);
+  border-radius: 20px;
+  box-shadow: 0 30px 100px rgba(15, 20, 35, .30);
+}
+
+.opm-header {
+  flex-basis: 82px;
+  padding: 0 34px;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f2;
+}
+
+.opm-logo {
+  font-size: 23px;
+  letter-spacing: -1px;
+}
+
+.opm-brand strong {
+  font-size: 15px;
+  letter-spacing: -.2px;
+}
+
+.opm-close {
+  width: 40px;
+  height: 40px;
+  transition: .2s ease;
+}
+
+.opm-close:hover {
+  transform: rotate(90deg);
+}
+
+.opm-content {
+  background: #f7f8fa;
+}
+
+.opm-content .np-page {
+  padding: 35px 42px 50px;
+}
+
+.opm-content .np-container {
+  max-width: 960px;
+}
+
+.opm-content .np-header {
+  margin-bottom: 34px;
+}
+
+.opm-content .np-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 30px;
+  background: #fff0f3;
+  letter-spacing: 1.3px;
+  font-size: 10px;
+}
+
+.opm-content .np-header h1 {
+  margin: 13px 0 8px;
+  font-size: 35px;
+  line-height: 1.2;
+  letter-spacing: -1.1px;
+  color: #252638;
+}
+
+.opm-content .np-header p {
+  font-size: 14px;
+  color: #777b89;
+  line-height: 1.7;
+}
+
+.opm-content .np-progress {
+  gap: 13px;
+  margin-bottom: 32px;
+}
+
+.opm-content .np-progress-step {
+  position: relative;
+  min-height: 48px;
+  padding: 9px 12px;
+  border: 1px solid #e9eaf0;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 12px;
+  color: #777b89;
+  transition: .2s ease;
+}
+
+.opm-content .np-progress-step span {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  background: #f0f1f4;
+  color: #858997;
+}
+
+.opm-content .np-progress-step.active {
+  border-color: #f84464;
+  background: #fff4f6;
+  color: #e73557;
+}
+
+.opm-content .np-progress-step.active span {
+  background: #f84464;
+  color: #fff;
+}
+
+.opm-content .np-card {
+  padding: 38px;
+  border: 1px solid #ececf0;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 8px 35px rgba(35, 38, 55, .045);
+}
+
+.opm-content .np-card h2 {
+  margin-bottom: 9px;
+  font-size: 25px;
+  letter-spacing: -.5px;
+  color: #292b3d;
+}
+
+.opm-content .np-card > p {
+  color: #818492;
+  line-height: 1.6;
+}
+
+.opm-content .np-card label {
+  margin: 27px 0 11px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #363849;
+}
+
+.opm-content .np-card input:not([type="file"]),
+.opm-content .np-card textarea {
+  min-height: 51px;
+  padding: 14px 16px;
+  border: 1px solid #e1e2e8;
+  border-radius: 10px;
+  background: #fff;
+  color: #333545;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.opm-content .np-card input:hover,
+.opm-content .np-card textarea:hover {
+  border-color: #c9cad2;
+}
+
+.opm-content .np-card input:focus,
+.opm-content .np-card textarea:focus {
+  border-color: #f84464;
+  box-shadow: 0 0 0 4px rgba(248, 68, 100, .09);
+  outline: none;
+}
+
+.opm-content .np-type-grid {
+  gap: 12px;
+}
+
+.opm-content .np-type-grid button,
+.opm-content .np-chip-grid button {
+  min-height: 45px;
+  padding: 12px 19px;
+  border-radius: 9px;
+  transition: .2s ease;
+}
+
+.opm-content .np-type-grid button:hover,
+.opm-content .np-chip-grid button:hover {
+  border-color: #f84464;
+  background: #fff7f8;
+}
+
+.opm-content .np-highlights-section {
+  margin-top: 34px;
+}
+
+.opm-content .np-highlights-heading {
+  margin-bottom: 17px;
+}
+
+.opm-content .np-highlights-heading label {
+  font-size: 16px;
+  color: #292b3d;
+}
+
+.opm-content .np-highlights-heading span {
+  font-size: 13px;
+  color: #858795;
+}
+
+.opm-content .np-highlights-grid {
+  gap: 12px;
+}
+
+.opm-content .np-highlight-option {
+  min-height: 57px;
+  padding: 13px 15px;
+  border: 1px solid #e7e8ed;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #505363;
+  transition: .2s ease;
+}
+
+.opm-content .np-highlight-option:hover {
+  border-color: #f5a0b0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(248, 68, 100, .06);
+}
+
+.opm-content .np-highlight-option.selected {
+  border-color: #f84464;
+  background: #fff3f5;
+  color: #e73557;
+  font-weight: 700;
+}
+
+.opm-content .np-highlight-check {
+  width: 23px;
+  height: 23px;
+  flex-basis: 23px;
+  border-radius: 7px;
+}
+
+.opm-content .np-highlight-count {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #f84464;
+}
+
+.opm-content .np-actions {
+  margin: 32px -38px -38px;
+  padding: 20px 38px;
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid #eeeef2;
+}
+
+.opm-content .np-primary {
+  min-height: 49px;
+  padding: 13px 25px;
+  border-radius: 10px;
+  font-size: 13px;
+  box-shadow: 0 5px 14px rgba(248, 68, 100, .15);
+  transition: .2s ease;
+}
+
+.opm-content .np-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 19px rgba(248, 68, 100, .22);
+}
+
+.opm-content .np-secondary {
+  min-height: 49px;
+  padding: 13px 22px;
+  border-radius: 10px;
+}
+
+.opm-content .np-note {
+  border: 1px solid #eeeef2;
+  background: #f8f9fb;
+  border-radius: 10px;
+  line-height: 1.7;
+}
+
+.opm-content .np-gps-box {
+  border-radius: 14px;
+  padding: 45px 25px;
+  background: linear-gradient(135deg, #fff7f8, #fff);
+}
+
+.opm-content .np-location-result {
+  border-radius: 12px;
+}
+
+.opm-content .np-upload {
+  border-radius: 14px;
+  padding: 45px 20px;
+  transition: .2s ease;
+}
+
+.opm-content .np-upload:hover {
+  border-color: #f84464;
+  background: #fff3f5;
+}
+
+.opm-content .np-review {
+  border: 1px solid #eeeef2;
+  border-radius: 13px;
+  background: #fafbfc;
+}
+
+@media (max-width: 700px) {
+  .opm-overlay {
+    padding: 0;
+  }
+
+  .opm-dialog {
+    height: 100dvh;
+    border-radius: 0;
+  }
+
+  .opm-header {
+    flex-basis: 68px;
+    padding: 0 17px;
+  }
+
+  .opm-content .np-page {
+    padding: 23px 15px 35px;
+  }
+
+  .opm-content .np-header h1 {
+    font-size: 28px;
+  }
+
+  .opm-content .np-card {
+    padding: 23px 17px;
+  }
+
+  .opm-content .np-progress {
+    gap: 6px;
+  }
+
+  .opm-content .np-progress-step {
+    padding: 8px 5px;
+    font-size: 10px;
+  }
+
+  .opm-content .np-actions {
+    margin: 25px -17px -23px;
+    padding: 15px 17px;
+  }
+}
+
