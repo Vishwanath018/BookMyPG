@@ -1542,3 +1542,570 @@ button, input, select {
     border-color: #C8102E !important;
 }
 
+
+/* =====================================
+   BOOKMYPG CUSTOMER AUTHENTICATION
+   RED AND WHITE DESIGN SYSTEM
+===================================== */
+
+.customer-auth-page {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 45px 20px;
+}
+
+.customer-auth-card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  padding: 35px 42px;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  box-shadow: 0 12px 45px rgba(0,0,0,0.07);
+}
+
+.customer-auth-brand {
+  display: block;
+  text-decoration: none;
+  color: #102C4C;
+  font-size: 29px;
+  font-weight: 900;
+  margin-bottom: 28px;
+}
+
+.customer-auth-brand span {
+  color: #ffffff;
+  background: #E31837;
+  padding: 2px 7px;
+  border-radius: 5px;
+  margin-left: 3px;
+}
+
+.customer-auth-card h1 {
+  font-size: 29px;
+  font-weight: 850;
+  color: #202020;
+  margin: 0 0 8px;
+}
+
+.customer-auth-description {
+  color: #777777;
+  font-size: 14px;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.customer-google-button {
+  width: 100%;
+  height: 53px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #222222;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.customer-google-button:hover {
+  border-color: #E31837;
+  background: #fffafa;
+}
+
+.google-letter {
+  font-size: 21px;
+  font-weight: 900;
+  color: #E31837;
+}
+
+.customer-auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 26px 0;
+  color: #999999;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.customer-auth-divider::before,
+.customer-auth-divider::after {
+  content: "";
+  height: 1px;
+  background: #eeeeee;
+  flex: 1;
+}
+
+.customer-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.customer-auth-form > label {
+  font-size: 13px;
+  font-weight: 750;
+  color: #333333;
+  margin-top: 8px;
+}
+
+.customer-auth-form input:not([type="checkbox"]),
+.customer-auth-form select {
+  width: 100%;
+  height: 49px;
+  border: 1px solid #dddddd;
+  border-radius: 7px;
+  padding: 0 13px;
+  color: #222222;
+  background: #ffffff;
+  font-size: 14px;
+  outline: none;
+}
+
+.customer-auth-form input:focus,
+.customer-auth-form select:focus {
+  border-color: #E31837;
+  box-shadow: 0 0 0 3px rgba(227,24,55,0.08);
+}
+
+.customer-profile-upload {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 5px 0 12px;
+}
+
+.profile-picture-label {
+  width: 76px;
+  height: 76px;
+  border: 2px dashed #E31837;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  background: #fffafa;
+}
+
+.profile-picture-label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-placeholder {
+  font-size: 30px;
+  color: #E31837;
+}
+
+.profile-upload-text {
+  color: #E31837;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.customer-profile-upload p {
+  font-size: 11px;
+  color: #999999;
+  margin-top: 5px;
+}
+
+.customer-mobile-input,
+.customer-password-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dddddd;
+  border-radius: 7px;
+  height: 49px;
+  overflow: hidden;
+}
+
+.customer-mobile-input:focus-within,
+.customer-password-input:focus-within {
+  border-color: #E31837;
+}
+
+.customer-mobile-input span {
+  padding: 0 13px;
+  border-right: 1px solid #eeeeee;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.customer-mobile-input input,
+.customer-password-input input {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.customer-password-input button {
+  border: none;
+  background: white;
+  color: #E31837;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.customer-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.5;
+  margin: 12px 0 !important;
+}
+
+.customer-terms input {
+  accent-color: #E31837;
+  margin-top: 3px;
+}
+
+.customer-primary-button {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 7px;
+  background: #E31837;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 850;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.customer-primary-button:hover {
+  background: #C8102E;
+  transform: translateY(-2px);
+}
+
+.customer-auth-footer {
+  text-align: center;
+  font-size: 13px;
+  color: #666666;
+  margin-top: 25px;
+}
+
+.customer-auth-footer a,
+.customer-forgot-password a {
+  color: #E31837;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.customer-forgot-password {
+  text-align: right;
+  font-size: 12px;
+  margin: 3px 0 8px;
+}
+
+.customer-back-home {
+  display: block;
+  text-align: center;
+  color: #777777;
+  text-decoration: none;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+@media (max-width: 560px) {
+  .customer-auth-page {
+    padding: 15px 10px;
+  }
+
+  .customer-auth-card {
+    padding: 28px 20px;
+  }
+
+  .customer-auth-card h1 {
+    font-size: 25px;
+  }
+}
+
+
+/* Customer authentication inside the existing BookMyPG popup */
+
+.auth-modal {
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: #E31837 #FFFFFF;
+}
+
+.customer-popup-content {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 22px;
+}
+
+.customer-popup-content .customer-google-button {
+  height: 48px;
+  border: 1px solid #E31837;
+  color: #102C4C;
+  background: #FFFFFF;
+  border-radius: 7px;
+  font-weight: 800;
+}
+
+.customer-popup-content .customer-auth-form {
+  gap: 9px;
+}
+
+.customer-popup-content .customer-auth-form > label {
+  margin-top: 5px;
+}
+
+.customer-popup-content .customer-auth-divider {
+  margin: 18px 0;
+}
+
+.customer-popup-content .customer-primary-button {
+  background: #E31837;
+  color: #FFFFFF;
+}
+
+.customer-popup-content .customer-forgot-password button {
+  border: none;
+  background: transparent;
+  color: #E31837;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+
+/* Customer signup terms checkbox - prevent overlapping */
+.customer-terms {
+    position: static !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100%;
+    margin: 14px 0 !important;
+    padding: 0 !important;
+    line-height: 1.5 !important;
+}
+
+.customer-terms span {
+    position: static !important;
+    line-height: 1.5 !important;
+}
+
+
+/* ==========================================
+   BOOKMYPG AUTH POPUP - DESIGN REFINEMENT
+========================================== */
+
+/* Modal content spacing */
+.auth-modal {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #E31837 #FFFFFF;
+}
+
+/* Authentication headings */
+.auth-modal h2 {
+  font-size: 28px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.8px;
+  margin-bottom: 10px !important;
+}
+
+.auth-modal .auth-subtitle {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* Customer form layout */
+.customer-popup-content {
+  margin-top: 24px;
+}
+
+.customer-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* Consistent left-aligned labels */
+.customer-auth-form > label:not(.customer-terms) {
+  display: block;
+  text-align: left !important;
+  width: 100%;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  color: #102C4C !important;
+  margin-top: 9px !important;
+  margin-bottom: 2px;
+}
+
+/* Input and dropdown refinement */
+.customer-auth-form input:not([type="checkbox"]),
+.customer-auth-form select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 49px;
+  border: 1px solid #DDDDDD;
+  border-radius: 8px;
+  padding: 0 15px;
+  background-color: #FFFFFF;
+  color: #222222;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.customer-auth-form input:focus,
+.customer-auth-form select:focus {
+  border-color: #E31837 !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(227, 24, 55, 0.09) !important;
+}
+
+/* Mobile input */
+.customer-mobile-input {
+  min-height: 50px;
+  border-radius: 8px;
+}
+
+.customer-mobile-input span {
+  color: #102C4C;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Password field */
+.customer-password-input {
+  min-height: 50px;
+  border-radius: 8px;
+}
+
+.customer-password-input button {
+  color: #E31837;
+  font-weight: 800;
+  padding: 0 14px;
+}
+
+/* Profile picture section */
+.customer-profile-upload {
+  padding: 12px;
+  border: 1px solid #EEEEEE;
+  border-radius: 10px;
+  background: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+.profile-picture-label {
+  width: 78px;
+  height: 78px;
+  flex-shrink: 0;
+  border: 2px dashed #E31837;
+  background: #FFFFFF;
+  transition: background 0.2s ease;
+}
+
+.profile-picture-label:hover {
+  background: #FFF5F6;
+}
+
+.profile-upload-text {
+  color: #E31837;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+/* Google button */
+.customer-popup-content .customer-google-button {
+  height: 52px;
+  border: 1.5px solid #E31837;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 850;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.customer-popup-content .customer-google-button:hover {
+  background: #FFF5F6;
+  transform: translateY(-1px);
+}
+
+/* Divider */
+.customer-auth-divider {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  font-weight: 900;
+  margin: 22px 0 !important;
+}
+
+/* Terms checkbox */
+.customer-terms {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 9px;
+  text-align: left !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  margin: 13px 0 !important;
+}
+
+.customer-terms input {
+  accent-color: #E31837;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Primary action */
+.customer-primary-button {
+  min-height: 53px;
+  border-radius: 8px;
+  background: #E31837 !important;
+  color: #FFFFFF !important;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.customer-primary-button:hover {
+  background: #C8102E !important;
+  transform: translateY(-2px);
+}
+
+/* Footer links */
+.customer-forgot-password {
+  margin-top: 4px;
+}
+
+.customer-forgot-password a,
+.customer-forgot-password button,
+.customer-auth-footer a {
+  color: #E31837 !important;
+  font-weight: 850;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 560px) {
+  .customer-popup-content {
+    margin-top: 18px;
+  }
+
+  .customer-auth-form {
+    gap: 7px;
+  }
+
+  .customer-auth-form > label:not(.customer-terms) {
+    margin-top: 7px !important;
+  }
+}
+
