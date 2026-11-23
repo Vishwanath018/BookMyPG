@@ -311,6 +311,8 @@ export default function HomePage() {
                   <option>Double sharing</option>
                   <option>Triple sharing</option>
                   <option>Four sharing</option>
+                  <option>Five sharing</option>
+                  <option>Six sharing</option>
                 </select>
               </span>
             </label>
@@ -350,6 +352,7 @@ export default function HomePage() {
     </main>
   );
 }
+
 
 
 
