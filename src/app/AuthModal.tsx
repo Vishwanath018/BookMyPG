@@ -1,6 +1,8 @@
 ﻿"use client";
 
 import { useState, FormEvent, ChangeEvent } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 type Role = "customer" | "owner";
 type Action = "login" | "signup";
@@ -25,6 +27,8 @@ export default function AuthModal({
   const [preview, setPreview] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   function selectAccount(selectedAction: Action, selectedRole: Role) {
     setAction(selectedAction);
@@ -49,52 +53,16 @@ export default function AuthModal({
     setPreview(URL.createObjectURL(file));
   }
 
-  function handleCustomerSignup(event: FormEvent<HTMLFormElement>) {
+  async function handleCustomerSignup(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const data = new FormData(event.currentTarget);
-    const mobile = String(data.get("mobile") || "");
-    const password = String(data.get("password") || "");
-    const confirmPassword = String(data.get("confirmPassword") || "");
 
-    if (!/^[6-9]\d{9}$/.test(mobile)) {
-      alert("Enter a valid 10-digit Indian mobile number.");
-      return;
-    }
-
-    if (password.length < 8) {
-      alert("Password must contain at least 8 characters.");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match.");
-      return;
-    }
-
-    alert("Form validated. Account creation will be enabled after Supabase integration.");
-  }
-
-  function handleCustomerLogin(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const data = new FormData(event.currentTarget);
-    const mobile = String(data.get("mobile") || "");
-
-    if (!/^[6-9]\d{9}$/.test(mobile)) {
-      alert("Enter a valid 10-digit Indian mobile number.");
-      return;
-    }
-
-    alert("Login form validated. Supabase authentication integration is pending.");
-  }
-
-  function handleOwnerSignup(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const data = new FormData(event.currentTarget);
-    const mobile = String(data.get("mobile") || "");
-    const email = String(data.get("email") || "");
+    const fullName = String(data.get("fullName") || "").trim();
+    const email = String(data.get("email") || "").trim().toLowerCase();
+    const mobile = String(data.get("mobile") || "").trim();
+    const accountType = String(data.get("accountType") || "");
+    const gender = String(data.get("gender") || "");
     const password = String(data.get("password") || "");
     const confirmPassword = String(data.get("confirmPassword") || "");
 
@@ -118,21 +86,227 @@ export default function AuthModal({
       return;
     }
 
-    alert("Owner registration form validated. Account creation will be enabled after Supabase integration.");
+    setLoading(true);
+
+    try {
+      const supabase = createClient();
+
+      const { data: result, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            role: "customer",
+            full_name: fullName,
+            phone: mobile,
+            account_type: accountType,
+            gender,
+          },
+        },
+      });
+
+      if (error) throw error;
+
+      if (result.session && result.user) {
+        const { data: profile, error: profileError } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("id", result.user.id)
+          .maybeSingle();
+
+        if (profileError) throw profileError;
+
+        if (profile?.role !== "customer") {
+          await supabase.auth.signOut();
+          throw new Error("Customer profile verification failed.");
+        }
+
+        router.replace("/explore");
+        router.refresh();
+        return;
+      }
+
+      alert("Your account has been created. Please check your email if confirmation is required, then log in.");
+      setAction("login");
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "Customer registration failed.");
+    } finally {
+      setLoading(false);
+    }
   }
 
-  function handleOwnerLogin(event: FormEvent<HTMLFormElement>) {
+  async function handleCustomerLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const data = new FormData(event.currentTarget);
-    const mobile = String(data.get("mobile") || "");
+
+    const email = String(data.get("email") || "").trim().toLowerCase();
+    const password = String(data.get("password") || "");
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert("Enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const supabase = createClient();
+
+      const { data: result, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+
+      const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", result.user.id)
+        .maybeSingle();
+
+      if (profileError) throw profileError;
+
+      if (profile?.role !== "customer") {
+        await supabase.auth.signOut();
+        throw new Error("This account is not registered as a customer.");
+      }
+
+      router.replace("/explore");
+      router.refresh();
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "Customer login failed.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleOwnerSignup(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const fullName = String(data.get("fullName") || "").trim();
+    const businessName = String(data.get("businessName") || "").trim();
+    const gender = String(data.get("gender") || "");
+    const mobile = String(data.get("mobile") || "").trim();
+    const email = String(data.get("email") || "").trim().toLowerCase();
+    const password = String(data.get("password") || "");
+    const confirmPassword = String(data.get("confirmPassword") || "");
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
 
     if (!/^[6-9]\d{9}$/.test(mobile)) {
       alert("Enter a valid 10-digit Indian mobile number.");
       return;
     }
 
-    alert("Owner login form validated. Supabase authentication integration is pending.");
+    if (password.length < 8) {
+      alert("Password must contain at least 8 characters.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const supabase = createClient();
+
+      const { data: result, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            role: "owner",
+            full_name: fullName,
+            phone: mobile,
+            business_name: businessName,
+            gender,
+          },
+        },
+      });
+
+      if (error) throw error;
+
+      if (result.session && result.user) {
+        const { data: profile, error: profileError } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("id", result.user.id)
+          .maybeSingle();
+
+        if (profileError) throw profileError;
+
+        if (profile?.role !== "owner") {
+          await supabase.auth.signOut();
+          throw new Error("Owner profile verification failed. Please contact support.");
+        }
+
+        router.replace("/owner/dashboard");
+        router.refresh();
+        return;
+      }
+
+      alert("Your owner account has been created. Please check your email to confirm your account, then log in.");
+      setAction("login");
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "Owner registration failed.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleOwnerLogin(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const email = String(data.get("email") || "").trim().toLowerCase();
+    const password = String(data.get("password") || "");
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert("Enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const supabase = createClient();
+
+      const { data: result, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+
+      const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", result.user.id)
+        .maybeSingle();
+
+      if (profileError) throw profileError;
+
+      if (profile?.role !== "owner") {
+        await supabase.auth.signOut();
+        throw new Error("This account is not registered as a PG Owner.");
+      }
+
+      router.replace("/owner/dashboard");
+      router.refresh();
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "Owner login failed.");
+    } finally {
+      setLoading(false);
+    }
   }
   function continueWithGoogle() {
     alert("Google authentication will be connected through Supabase.");
@@ -279,6 +453,14 @@ export default function AuthModal({
                     placeholder="Enter your full name"
                     required
                   />
+                  <label>Email address</label>
+                  <input
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="Enter your email address"
+                    required
+                  />
 
                   <label>Account type</label>
                   <select name="accountType" defaultValue="" required>
@@ -353,7 +535,7 @@ export default function AuthModal({
                     type="submit"
                     className="customer-primary-button"
                   >
-                    Create Account
+                    {loading ? "Creating account..." : "Create Account"}
                   </button>
                 </form>
               ) : (
@@ -361,18 +543,14 @@ export default function AuthModal({
                   className="customer-auth-form"
                   onSubmit={handleCustomerLogin}
                 >
-                  <label>Mobile number</label>
-                  <div className="customer-mobile-input">
-                    <span>+91</span>
-                    <input
-                      name="mobile"
-                      type="tel"
-                      inputMode="numeric"
-                      maxLength={10}
-                      placeholder="Enter mobile number"
-                      required
-                    />
-                  </div>
+                  <label>Email address</label>
+                  <input
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="Enter your registered email"
+                    required
+                  />
 
                   <label>Password</label>
                   <input
@@ -397,7 +575,7 @@ export default function AuthModal({
                     type="submit"
                     className="customer-primary-button"
                   >
-                    Login
+                    {loading ? "Signing in..." : "Login"}
                   </button>
                 </form>
               )}
@@ -555,7 +733,7 @@ export default function AuthModal({
                     type="submit"
                     className="customer-primary-button"
                   >
-                    Create Owner Account
+                    {loading ? "Creating account..." : "Create Owner Account"}
                   </button>
                 </form>
               ) : (
@@ -563,18 +741,14 @@ export default function AuthModal({
                   className="customer-auth-form"
                   onSubmit={handleOwnerLogin}
                 >
-                  <label>Mobile number</label>
-                  <div className="customer-mobile-input">
-                    <span>+91</span>
-                    <input
-                      name="mobile"
-                      type="tel"
-                      inputMode="numeric"
-                      maxLength={10}
-                      placeholder="Enter mobile number"
-                      required
-                    />
-                  </div>
+                  <label>Email address</label>
+                  <input
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="Enter your registered email"
+                    required
+                  />
 
                   <label>Password</label>
                   <div className="customer-password-input">
@@ -607,7 +781,7 @@ export default function AuthModal({
                     type="submit"
                     className="customer-primary-button"
                   >
-                    Login
+                    {loading ? "Signing in..." : "Login"}
                   </button>
                 </form>
               )}
@@ -627,6 +801,8 @@ export default function AuthModal({
     </div>
   );
 }
+
+
 
 
 

@@ -14,6 +14,8 @@ VALUES (
 ON CONFLICT (id) DO NOTHING;
 
 -- 2. Owners can upload only into their own property folders.
+DROP POLICY IF EXISTS "Owners upload property images" ON storage.objects;
+
 CREATE POLICY "Owners upload property images"
 ON storage.objects
 FOR INSERT TO authenticated
@@ -27,6 +29,8 @@ WITH CHECK (
           AND (storage.foldername(name))[1] = auth.uid()::text
     )
 );
+
+DROP POLICY IF EXISTS "Owners delete property images" ON storage.objects;
 
 CREATE POLICY "Owners delete property images"
 ON storage.objects
@@ -137,3 +141,4 @@ $$;
 
 REVOKE ALL ON FUNCTION public.activate_pg_property(uuid) FROM PUBLIC;
 GRANT EXECUTE ON FUNCTION public.activate_pg_property(uuid) TO authenticated;
+
