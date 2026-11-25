@@ -1,0 +1,26 @@
+import { Suspense } from "react";
+import PropertyDetailsClient from "./PropertyDetailsClient";
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export default function PropertyDetailsPage({ params }: Props) {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen flex items-center justify-center">
+          <p>Loading property details...</p>
+        </main>
+      }
+    >
+      <PropertyDetails params={params} />
+    </Suspense>
+  );
+}
+
+async function PropertyDetails({ params }: Props) {
+  const { id } = await params;
+
+  return <PropertyDetailsClient propertyId={id} />;
+}

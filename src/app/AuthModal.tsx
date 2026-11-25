@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, FormEvent, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
@@ -11,12 +11,14 @@ interface AuthModalProps {
   onClose: () => void;
   initialAction?: Action;
   initialRole?: Role;
+  redirectTo?: string;
 }
 
 export default function AuthModal({
   onClose,
   initialAction,
   initialRole,
+  redirectTo,
 }: AuthModalProps) {
   const [action, setAction] = useState<Action | null>(initialAction ?? null);
   const [role, setRole] = useState<Role | null>(initialRole ?? null);
@@ -121,7 +123,7 @@ export default function AuthModal({
           throw new Error("Customer profile verification failed.");
         }
 
-        router.replace("/explore");
+        router.replace(redirectTo || "/explore");
         router.refresh();
         return;
       }
@@ -173,7 +175,7 @@ export default function AuthModal({
         throw new Error("This account is not registered as a customer.");
       }
 
-      router.replace("/explore");
+      router.replace(redirectTo || "/explore");
       router.refresh();
     } catch (error) {
       alert(error instanceof Error ? error.message : "Customer login failed.");

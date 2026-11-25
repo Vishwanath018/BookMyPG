@@ -1,0 +1,46 @@
+.pg-details-page{min-height:100vh;background:#f7f8fa;color:#172b45}
+.pg-details-header{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #e8ebef}
+.pg-details-brand{font-size:28px;font-weight:900;letter-spacing:-1.5px}
+.pg-details-brand span{color:#e31837}
+.pg-details-container{max-width:1180px;margin:auto;padding:28px 22px 70px}
+.pg-breadcrumb{color:#8490a0;font-size:13px;margin-bottom:24px}
+.pg-breadcrumb a{color:#344d68}
+.pg-details-heading{margin-bottom:22px}
+.pg-details-heading h1{font-size:clamp(27px,4vw,38px);margin:10px 0;letter-spacing:-1px}
+.pg-details-heading p{color:#66758a;margin:0 0 12px}
+.pg-approved-label{color:#168653;font-size:12px;font-weight:800}
+.pg-type-label{display:inline-block;padding:6px 11px;background:#eaf0f7;border-radius:20px;font-size:12px;text-transform:capitalize}
+.pg-gallery{display:grid;grid-template-columns:2fr 1fr;gap:12px;height:390px;overflow:hidden;border-radius:15px}
+.pg-gallery>img,.pg-gallery-side img{width:100%;height:100%;object-fit:cover}
+.pg-gallery-side{display:grid;grid-template-rows:1fr 1fr;gap:12px;min-height:0}
+.pg-no-image{display:grid;place-items:center;background:#e9edf2;color:#6d7a8b}
+.pg-details-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:25px;margin-top:26px;align-items:start}
+.pg-details-main{display:grid;gap:18px}
+.pg-info-card,.pg-booking-card{background:#fff;border:1px solid #e8ebef;border-radius:13px;padding:24px}
+.pg-info-card h2,.pg-booking-card h2{font-size:19px;margin:0 0 16px}
+.pg-info-card p{color:#64748b;line-height:1.7;margin:0}
+.pg-amenities{display:flex;flex-wrap:wrap;gap:11px}
+.pg-amenities span{background:#f4f7f9;padding:10px 13px;border-radius:8px;font-size:13px}
+.pg-room-list{display:grid;gap:12px}
+.pg-room-option{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:left;padding:17px;border:1px solid #e3e8ee;border-radius:10px;background:#fff;cursor:pointer;color:#172b45}
+.pg-room-option.selected{border:2px solid #168653;background:#f4fbf7}
+.pg-room-option>div:first-child{display:grid;gap:7px}
+.pg-room-option span,.pg-room-option small{color:#718096;font-size:12px}
+.pg-room-price{text-align:right;font-weight:800;white-space:nowrap}
+.pg-room-price small{display:block;font-weight:400;margin:5px 0}
+.pg-room-price span{color:#168653}
+.pg-booking-card{position:sticky;top:20px;box-shadow:0 8px 28px rgba(20,40,65,.05)}
+.pg-booking-eyebrow{font-size:11px;color:#168653;font-weight:900;letter-spacing:1px}
+.pg-booking-card h2{margin-top:9px}
+.pg-selected-room{display:grid;gap:5px;padding:13px;background:#f5f7f9;border-radius:9px;margin-bottom:17px}
+.pg-selected-room span{color:#718096;font-size:12px}
+.pg-price-row{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #edf0f3;font-size:13px}
+.pg-price-row strong{font-size:15px}
+.pg-booking-note,.pg-secure-note{font-size:12px;color:#748196;line-height:1.6}
+.pg-continue-button{width:100%;padding:15px;border:0;border-radius:8px;background:#168653;color:white;font-weight:800;cursor:pointer;margin-top:10px}
+.pg-continue-button:disabled{opacity:.45;cursor:not-allowed}
+.pg-secure-note{text-align:center;margin:14px 0 0}
+.pg-booking-error{color:#c62828;font-size:12px}
+.pg-details-state{min-height:70vh;display:grid;align-content:center;justify-items:center;gap:12px;color:#172b45}
+@media(max-width:800px){.pg-details-layout{grid-template-columns:1fr}.pg-booking-card{position:static;grid-row:1}.pg-gallery{height:290px}}
+@media(max-width:520px){.pg-details-header{padding:0 18px}.pg-details-container{padding:20px 14px 45px}.pg-gallery{display:block;height:250px}.pg-gallery-side{display:none}.pg-info-card,.pg-booking-card{padding:18px}.pg-room-option{align-items:flex-start;padding:13px}.pg-room-price{font-size:13px}}
